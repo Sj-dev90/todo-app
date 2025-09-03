@@ -70,3 +70,23 @@ function renderTasks() {
 function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
+// Dark mode toggle
+const toggleThemeBtn = document.getElementById("toggle-theme");
+
+// Check if dark mode was saved before
+if (localStorage.getItem("darkMode") === "enabled") {
+  document.body.classList.add("dark");
+  toggleThemeBtn.textContent = "☀ Light Mode";
+}
+
+toggleThemeBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+
+  if (document.body.classList.contains("dark")) {
+    toggleThemeBtn.textContent = "☀ Light Mode";
+    localStorage.setItem("darkMode", "enabled");
+  } else {
+    toggleThemeBtn.textContent = "🌙 Dark Mode";
+    localStorage.setItem("darkMode", "disabled");
+  }
+});
